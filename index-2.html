@@ -898,7 +898,6 @@
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s var(--ease-out);
-        loading: lazy;
       }
       .product-card:hover .product-img-wrap img {
         transform: scale(1.05);
@@ -1125,6 +1124,7 @@
         object-fit: cover;
       }
       .modal-details {
+        display: inherit; /*  "display : inherit" est une propriété factice - espace réservé pour usage futur */
       }
       .modal-cat {
         font-size: 0.68rem;
