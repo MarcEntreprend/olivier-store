@@ -2227,7 +2227,7 @@
             <button
               type="button"
               class="js-gh-open-search-modal gh-dh-icon-btn"
-              title="Search products"
+              title="Rechercher..."
               aria-label="Search products"
               aria-expanded="false"
               aria-controls="gh-search-modal"
@@ -2248,7 +2248,7 @@
               href="https://web.telegram.org/a/#5284380831"
               target="_blank"
               rel="noopener noreferrer"
-              class="gh-dh-telegram-btn"
+              class="gh-dh-telegram-btn gh-telegram-btn-fixed"
             >
               <svg
                 width="14"
@@ -2326,10 +2326,10 @@
             class="gh-header-mobile-only flex flex-1 items-center justify-center min-w-0"
           >
             <a
-              href="#"
+              href="https://web.telegram.org/a/#5284380831"
               target="_blank"
               rel="noopener noreferrer"
-              class="social-btnn flex items-center gap-1.5 rounded-lg bg-[#1877f2] px-2.5 py-1.5 text-[10px] font-semibold text-white no-underline sm:px-3 sm:text-xs"
+              class="social-btnn gh-telegram-btn-fixed flex items-center gap-1.5 rounded-lg bg-[#1877f2] px-2.5 py-1.5 text-[10px] font-semibold text-white no-underline sm:px-3 sm:text-xs"
             >
               <span
                 class="header-icon-svg shrink-0"
@@ -2426,7 +2426,7 @@
               type="search"
               name="s"
               id="gh-search-modal-input"
-              placeholder="Search products..."
+              placeholder="Rechercher..."
               value=""
               class="gh-input rounded-lg px-3 py-2 text-sm"
               aria-label="Search products"
@@ -2435,7 +2435,7 @@
               type="submit"
               class="gh-btn-primary rounded-lg px-4 py-2 text-sm font-semibold"
             >
-              Search
+              Rechercher
             </button>
           </form>
         </div>
@@ -2443,14 +2443,14 @@
 
       <div class="gh-scroll-wrap flex flex-1 flex-col min-h-0">
         <style>
-          .gh-videos-hero-title {
+          .artmace-hero-title {
             font-size: clamp(2rem, 4.6vw, 3.75rem);
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: -0.02em;
             text-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
           }
-          .gh-videos-hero-search {
+          .artmace-hero-search {
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -2465,15 +2465,15 @@
               border-color 0.2s ease,
               background-color 0.2s ease;
           }
-          .gh-videos-hero-search:focus-within {
+          .artmace-hero-search:focus-within {
             border-color: rgba(242, 253, 125, 0.6);
             background: rgba(255, 255, 255, 0.15);
           }
-          .gh-videos-hero-input-wrap {
+          .artmace-hero-input-wrap {
             position: relative;
             flex: 1;
           }
-          .gh-videos-hero-search-icon {
+          .artmace-hero-search-icon {
             position: absolute;
             left: 0.9rem;
             top: 50%;
@@ -2528,8 +2528,15 @@
               0 0 2px rgba(0, 0, 0, 0.9),
               0 1px 3px rgba(0, 0, 0, 0.6);
           }
+          /* Telegram button – toujours en mode clair, même en dark mode */
+          .gh-telegram-btn-fixed,
+          .gh-layout-root[data-theme="dark"] .gh-telegram-btn-fixed,
+          .gh-layout-root[data-theme="light"] .gh-telegram-btn-fixed {
+            background-color: #1877f2 !important;
+            color: #ffffff !important;
+          }
 
-          .gh-videos-hero-input {
+          .artmace-hero-input {
             width: 100%;
             border: 0 !important;
             background: transparent !important;
@@ -2538,14 +2545,14 @@
             font-size: 0.95rem !important;
             border-radius: 0.75rem !important;
           }
-          .gh-videos-hero-input::placeholder {
+          .artmace-hero-input::placeholder {
             color: rgba(255, 255, 255, 0.62) !important;
           }
-          .gh-videos-hero-input:focus {
+          .artmace-hero-input:focus {
             outline: none !important;
             box-shadow: none !important;
           }
-          .gh-videos-hero-search-btn {
+          .artmace-hero-search-btn {
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
@@ -2562,13 +2569,13 @@
               opacity 0.18s ease,
               transform 0.18s ease;
           }
-          .gh-videos-hero-search-btn:hover {
+          .artmace-hero-search-btn:hover {
             opacity: 0.9;
           }
-          .gh-videos-hero-search-btn:active {
+          .artmace-hero-search-btn:active {
             transform: scale(0.98);
           }
-          .gh-videos-hero-chip {
+          .artmace-hero-chip {
             border-radius: 999px;
             border: 1px solid rgba(255, 255, 255, 0.22);
             background: rgba(255, 255, 255, 0.1);
@@ -2583,21 +2590,21 @@
               background-color 0.18s ease,
               border-color 0.18s ease;
           }
-          .gh-videos-hero-chip:hover {
+          .artmace-hero-chip:hover {
             transform: translateY(-1px);
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.36);
           }
           @media (min-width: 640px) {
-            .gh-videos-hero-input {
+            .artmace-hero-input {
               font-size: 1rem !important;
               padding-left: 2.85rem !important;
             }
-            .gh-videos-hero-search-btn {
+            .artmace-hero-search-btn {
               padding: 0.8rem 1.05rem;
               font-size: 0.85rem;
             }
-            .gh-videos-hero-chip {
+            .artmace-hero-chip {
               font-size: 0.76rem;
               padding: 0.42rem 0.95rem;
             }
@@ -2630,7 +2637,7 @@
                 New Collection
               </span> -->
 
-              <h1 class="gh-videos-hero-title mt-3 text-white">
+              <h1 class="artmace-hero-title mt-3 text-white">
                 Découvrez <span style="color: #f2fd7d">Nos Créations</span>
               </h1>
               <p
@@ -2644,11 +2651,11 @@
               <form
                 role="search"
                 method="get"
-                class="gh-videos-hero-search"
+                class="artmace-hero-search"
                 href="#"
               >
-                <div class="gh-videos-hero-input-wrap">
-                  <span class="gh-videos-hero-search-icon" aria-hidden="true">
+                <div class="artmace-hero-input-wrap">
+                  <span class="artmace-hero-search-icon" aria-hidden="true">
                     <svg
                       class="h-4 w-4 sm:h-5 sm:w-5"
                       viewBox="0 0 24 24"
@@ -2664,10 +2671,10 @@
                     type="search"
                     name="s"
                     placeholder="Rechercher par produit, matière, usage.."
-                    class="gh-input gh-videos-hero-input"
+                    class="gh-input artmace-hero-input"
                   />
                 </div>
-                <button type="submit" class="gh-videos-hero-search-btn">
+                <button type="submit" class="artmace-hero-search-btn">
                   <svg
                     class="h-3.5 w-3.5 sm:h-4 sm:w-4"
                     viewBox="0 0 24 24"
@@ -2689,10 +2696,10 @@
             <div
               class="mx-auto mt-4 flex max-w-3xl flex-wrap items-center justify-center gap-1.5 sm:mt-5 sm:gap-2"
             >
-              <a href="#" class="gh-videos-hero-chip">Acajou</a>
-              <a href="#" class="gh-videos-hero-chip">Porte-clés</a>
-              <a href="#" class="gh-videos-hero-chip">Encadrements</a>
-              <a href="#" class="gh-videos-hero-chip">Cadeaux</a>
+              <a href="#" class="artmace-hero-chip">Acajou</a>
+              <a href="#" class="artmace-hero-chip">Porte-clés</a>
+              <a href="#" class="artmace-hero-chip">Encadrements</a>
+              <a href="#" class="artmace-hero-chip">Cadeaux</a>
             </div>
           </div>
         </section>
@@ -3556,10 +3563,10 @@
     <script>
       /**
        * Dark/Light theme toggle for Art Macé Production Artisanale.
-       * Persists to localStorage key: gh-videos-theme
+       * Persists to localStorage key: artmace-theme
        */
       (function () {
-        var KEY = "gh-videos-theme";
+        var KEY = "artmace-theme";
         var root = document.querySelector(".gh-layout-root");
         if (!root) return;
 
