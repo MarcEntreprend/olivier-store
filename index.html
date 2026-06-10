@@ -66,6 +66,7 @@
 
       html {
         background-color: #f4f4f5;
+        scroll-behavior: smooth;
       }
       body {
         margin: 0;
@@ -387,6 +388,7 @@
           overflow-y: auto !important;
           overflow-x: hidden !important;
           -webkit-overflow-scrolling: touch !important;
+          scroll-behavior: smooth;
           padding-top: calc(56px + env(safe-area-inset-top, 0)) !important;
           padding-bottom: calc(
             72px + env(safe-area-inset-bottom, 0)
@@ -645,8 +647,8 @@
         border: 2px solid var(--gh-bg-header) !important;
       }
 
-      /* Video card */
-      .video-card {
+      /* Item card */
+      .item-card {
         display: block !important;
         border-radius: 1rem !important;
         border: 1px solid var(--gh-border) !important;
@@ -655,28 +657,28 @@
         transition: opacity 0.2s !important;
         text-decoration: none !important;
       }
-      .video-card:hover {
+      .item-card:hover {
         opacity: 0.9 !important;
       }
-      .video-card:focus {
+      .item-card:focus {
         outline: none !important;
         box-shadow: 0 0 0 2px var(--gh-accent) !important;
       }
-      .video-card-thumb {
+      .item-card-thumb {
         position: relative !important;
         aspect-ratio: 16/9 !important;
         width: 100% !important;
         background: var(--gh-border) !important;
       }
-      .video-card-thumb img {
+      .item-card-thumb img {
         width: 100% !important;
         height: 100% !important;
         object-fit: cover !important;
       }
-      .video-card-thumb img.fallback {
+      .item-card-thumb img.fallback {
         object-fit: contain !important;
       }
-      .video-card-new {
+      .item-card-new {
         position: absolute !important;
         right: 0.5rem !important;
         top: 0.5rem !important;
@@ -688,23 +690,23 @@
         color: var(--gh-accent-contrast) !important;
         border-radius: 4px !important;
       }
-      .video-card-body {
+      .item-card-body {
         padding: 0.5rem 1rem !important;
       }
       @media (min-width: 640px) {
-        .video-card-body {
+        .item-card-body {
           padding: 1rem !important;
         }
       }
-      .video-card-date {
+      .item-card-date {
         font-size: 10px !important;
       }
       @media (min-width: 640px) {
-        .video-card-date {
+        .item-card-date {
           font-size: 12px !important;
         }
       }
-      .video-card-title {
+      .item-card-title {
         margin-top: 0.125rem !important;
         font-size: 12px !important;
         font-weight: 600 !important;
@@ -716,38 +718,38 @@
         overflow: hidden !important;
       }
       @media (min-width: 640px) {
-        .video-card-title {
+        .item-card-title {
           font-size: 1rem !important;
           margin-top: 0.25rem !important;
         }
       }
-      .video-card-watch {
+      .item-card-watch {
         margin-top: 0.25rem !important;
         font-size: 12px !important;
       }
       @media (min-width: 640px) {
-        .video-card-watch {
+        .item-card-watch {
           margin-top: 0.5rem !important;
           font-size: 14px !important;
         }
       }
 
       /* Video detail content */
-      .video-detail-content a {
+      .item-detail-content a {
         color: var(--gh-accent) !important;
       }
-      .video-detail-content a:hover {
+      .item-detail-content a:hover {
         text-decoration: underline !important;
       }
-      .video-detail-content p {
+      .item-detail-content p {
         margin-bottom: 0.75rem !important;
       }
-      .video-detail-content iframe {
+      .item-detail-content iframe {
         max-width: 100% !important;
         aspect-ratio: 16/9 !important;
         width: 100% !important;
       }
-      .video-detail-content img {
+      .item-detail-content img {
         max-width: 100% !important;
         height: auto !important;
       }
@@ -1133,11 +1135,14 @@
       .gh-nav-tabs li {
         flex: 1 !important;
         min-width: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
       }
       .gh-nav-tabs .gh-nav-link {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
+        justify-content: center !important;
         padding: 0.25rem 0.5rem !important;
         border-radius: 0.5rem !important;
         text-decoration: none !important;
@@ -1525,7 +1530,26 @@
       }
       .gh-mobile-footer .gh-nav-link {
         color: var(--gh-text-secondary) !important;
+        position: relative !important;
+        text-align: center !important;
+        transition:
+          color 0.18s ease,
+          transform 0.18s ease,
+          background-color 0.18s ease !important;
       }
+
+      /*  */
+
+      .gh-mobile-footer .gh-nav-link:hover {
+        color: var(--gh-accent) !important;
+      }
+      .gh-mobile-footer .gh-nav-link:active {
+        transform: scale(0.94) !important;
+      }
+      .gh-mobile-footer .gh-nav-link.active {
+        color: var(--gh-accent) !important;
+      }
+
       .gh-mobile-footer .gh-nav-link .gh-nav-icon-wrap {
         display: inline-flex;
         align-items: center;
@@ -1756,34 +1780,34 @@
 
     <meta
       name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-item-preview:-1"
     />
 
     <!-- This site is optimized with the Yoast SEO plugin v27.7 - https://yoast.com/product/yoast-seo-wordpress/ -->
     <title>
-      NovaWear - Shop Trendy Clothing & Fashion Online | Dresses, Sneakers,
-      Hoodies & More
+      Art Macé - Artisanat d'Art & Créations en Acajou | Porte-clés,
+      Encadrements, Plaques d'Honneur & Cadeaux
     </title>
     <meta
       name="description"
-      content="NovaWear est votre boutique en ligne de mode tendance. Découvrez nos collections de vêtements, sneakers, hoodies, robes, jeans et accessoires pour homme, femme et enfant. Livraison rapide et retours faciles."
+      content="Art Macé est votre boutique en ligne de créations artisanales. Découvrez nos collections de porte-clés, encadrements, plaques d'honneur, coffrets cadeaux et objets en acajou, façonnés à la main. Livraison soignée et personnalisation sur demande."
     />
-    <link rel="canonical" href="https://novawear.com/shop/" />
-    <link rel="next" href="https://novawear.com/shop/page/2/" />
+    <link rel="canonical" href="https://artmace.com/boutique/" />
+    <link rel="next" href="https://artmace.com/boutique/page/2/" />
 
     <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="fr_FR" />
     <meta property="og:type" content="website" />
     <meta
       property="og:title"
-      content="NovaWear - Trendy Clothing & Fashion Online Store"
+      content="Art Macé - Créations Artisanales en Acajou & Cadeaux"
     />
     <meta
       property="og:description"
-      content="Shop the latest fashion trends at NovaWear. Premium clothing, sneakers, hoodies, dresses and accessories for men, women and kids."
+      content="Découvrez l'artisanat d'exception chez Art Macé. Porte-clés, encadrements, plaques d'honneur et objets décoratifs en acajou, faits main avec passion."
     />
-    <meta property="og:url" content="https://novawear.com/shop/" />
-    <meta property="og:site_name" content="NovaWear" />
+    <meta property="og:url" content="https://artmace.com/boutique/" />
+    <meta property="og:site_name" content="Art Macé" />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Schema.org Structured Data -->
@@ -1791,15 +1815,15 @@
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "NovaWear",
-        "url": "https://novawear.com/",
-        "description": "Boutique en ligne de vêtements tendance et mode moderne.",
+        "name": "Art Macé",
+        "url": "https://artmace.com/",
+        "description": "Boutique en ligne de créations artisanales en acajou : porte-clés, encadrements, plaques d'honneur et cadeaux faits main.",
         "publisher": {
           "@type": "Organization",
-          "name": "NovaWear",
+          "name": "Art Macé",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+            "url": "images/logo-artmace-2.png"
           }
         }
       }
@@ -2159,26 +2183,25 @@
       gtag("config", "G-XXXXXXXXXX");
     </script>
 
-    <!-- Nouveau Logo / Favicon -->
-    <link
-      rel="icon"
-      href="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
-      sizes="32x32"
-    />
-    <link
-      rel="icon"
-      href="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
-      sizes="192x192"
-    />
-    <link
-      rel="apple-touch-icon"
-      href="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
-    />
-    <meta
-      name="msapplication-TileImage"
-      content="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
-    />
-  </head>
+<!-- Logo / Favicon -->
+<link
+  rel="icon"
+  href="images/logo-artmace-2.png"
+  sizes="32x32"
+/>
+<link
+  rel="icon"
+  href="images/logo-artmace-2.png"
+  sizes="192x192"
+/>
+<link
+  rel="apple-touch-icon"
+  href="images/logo-artmace-2.png"
+/>
+<meta
+  name="msapplication-TileImage"
+  content="images/logo-artmace-2.png"
+/>
 
   <body class="home blog">
     <div
@@ -2201,7 +2224,7 @@
           <div class="gh-dh-left">
             <a href="#" class="gh-dh-logo">
               <img
-                src="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
+                src="images/logo-artmace-2.png"
                 alt="Art Macé Production Artisanale"
                 loading="eager"
                 width="40"
@@ -2305,12 +2328,13 @@
       <nav
         class="main-nav gh-header-bar z-50 border-b gh-border-theme gh-bg-header backdrop-blur"
       >
+
         <div
           class="nav-container mx-auto flex max-w-[95%] flex-wrap items-center justify-between gap-2 px-4 py-2 sm:max-w-[80%] sm:px-6 lg:px-8"
         >
           <a href="#" class="logo flex shrink-0 items-center gap-2">
             <img
-              src="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
+              src="images/logo-artmace-2.png"
               alt="Art Macé Production Artisanale"
               class="h-12 w-auto"
               loading="eager"
@@ -2720,13 +2744,13 @@
           <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-3">
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/plaque-dhonneur-1.jpg"
                   alt="Plaques d'Honneur en Plexiglass"
                   width="768"
                   height="432"
@@ -2735,40 +2759,40 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Plaques d'Honneur en Plexiglass
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/portes-cles.jpg"
                   alt="Porte-clés"
                   width="768"
                   height="432"
@@ -2777,40 +2801,40 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Porte-clés
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/Cadre-Photo-Artisanal.jpg"
                   alt="Cadre Photo Artisanal"
                   width="768"
                   height="432"
@@ -2819,40 +2843,40 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Cadre Photo Artisanal
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/Tasses-Personnalisées.jpg"
                   alt="Tasses Personnalisées"
                   width="768"
                   height="432"
@@ -2861,82 +2885,40 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Tasses Personnalisées
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
-                  alt="Sérigraphie"
-                  width="768"
-                  height="432"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span
-                  class="video-card-new"
-                  style="
-                    background-color: var(--gh-accent);
-                    color: var(--gh-accent-contrast);
-                  "
-                  >New</span
-                >
-              </div>
-              <div class="video-card-body p-2 sm:p-4">
-                <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
-                >
-                  June 9, 2026
-                </p>
-                <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
-                >
-                  Sérigraphie
-                </h2>
-                <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
-                  >Voir l'article →</span
-                >
-              </div>
-            </a>
-            <a
-              href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
-            >
-              <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
-              >
-                <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/Tumblers.jpg"
                   alt="Tumblers"
                   width="768"
                   height="432"
@@ -2945,41 +2927,41 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Tumblers
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
-                  alt="Sous-verres Personalisés"
+                  src="images/produits/plaque-dhonneur-3.jpg"
+                  alt="Plaques d'Honneur en PVC"
                   width="768"
                   height="432"
                   class="w-full h-full object-cover"
@@ -2987,40 +2969,40 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Sous-verres Personalisés
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/plaque-dhonneur-2.jpg"
                   alt="Boîte à Bijoux en Acajou"
                   width="768"
                   height="432"
@@ -3029,41 +3011,41 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Boîte à Bijoux en Acajou
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
-                  alt="Impression sur Gobelet, casquet, ..."
+                  src="images/produits/medailles.jpg"
+                  alt="Médailles..."
                   width="768"
                   height="432"
                   class="w-full h-full object-cover"
@@ -3071,124 +3053,40 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
-                >
-                  Impression sur Gobelet, casquet, ...
-                </h2>
-                <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
-                  >Voir l'article →</span
-                >
-              </div>
-            </a>
-            <a
-              href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
-            >
-              <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
-              >
-                <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
-                  alt="Impression sur Gobelet, casquet, ..."
-                  width="768"
-                  height="432"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span
-                  class="video-card-new"
-                  style="
-                    background-color: var(--gh-accent);
-                    color: var(--gh-accent-contrast);
-                  "
-                  >New</span
-                >
-              </div>
-              <div class="video-card-body p-2 sm:p-4">
-                <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
-                >
-                  June 9, 2026
-                </p>
-                <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
-                >
-                  Impression sur Gobelet, casquet, ...
-                </h2>
-                <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
-                  >Voir l'article →</span
-                >
-              </div>
-            </a>
-            <a
-              href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
-            >
-              <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
-              >
-                <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
-                  alt="Médailles, "
-                  width="768"
-                  height="432"
-                  class="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span
-                  class="video-card-new"
-                  style="
-                    background-color: var(--gh-accent);
-                    color: var(--gh-accent-contrast);
-                  "
-                  >New</span
-                >
-              </div>
-              <div class="video-card-body p-2 sm:p-4">
-                <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
-                >
-                  June 9, 2026
-                </p>
-                <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Médailles,
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
             <a
               href="#"
-              class="video-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
             >
               <div
-                class="video-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
               >
                 <img
-                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  src="images/produits/Résine.jpg"
                   alt="Résine"
                   width="768"
                   height="432"
@@ -3197,31 +3095,74 @@
                   decoding="async"
                 />
                 <span
-                  class="video-card-new"
+                  class="item-card-new"
                   style="
                     background-color: var(--gh-accent);
                     color: var(--gh-accent-contrast);
                   "
-                  >New</span
+                  >Nouveau</span
                 >
               </div>
-              <div class="video-card-body p-2 sm:p-4">
+              <div class="item-card-body p-2 sm:p-4">
                 <p
-                  class="video-card-date text-[10px] sm:text-xs gh-text-secondary"
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
                 >
-                  June 9, 2026
+                  9 Juin 2026
                 </p>
                 <h2
-                  class="video-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
                 >
                   Résine
                 </h2>
                 <span
-                  class="video-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
                   >Voir l'article →</span
                 >
               </div>
             </a>
+             <a
+              href="#"
+              class="item-card block rounded-2xl border gh-border-theme gh-bg-card overflow-hidden transition-colors hover:opacity-90"
+            >
+              <div
+                class="item-card-thumb relative aspect-video w-full bg-[var(--gh-border)]"
+              >
+                <img
+                  src="https://cdn.pixabay.com/photo/2026/01/26/22/44/cat-10089737_1280.png"
+                  alt="Impression sur Gobelet, casquet, ..."
+                  width="768"
+                  height="432"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span
+                  class="item-card-new"
+                  style="
+                    background-color: var(--gh-accent);
+                    color: var(--gh-accent-contrast);
+                  "
+                  >Nouveau</span
+                >
+              </div>
+              <div class="item-card-body p-2 sm:p-4">
+                <p
+                  class="item-card-date text-[10px] sm:text-xs gh-text-secondary"
+                >
+                  9 Juin 2026
+                </p>
+                <h2
+                  class="item-card-title mt-0.5 sm:mt-1 text-xs sm:text-base font-semibold gh-text-primary line-clamp-2 leading-tight"
+                >
+                  Impression sur Gobelet, casquet, ...
+                </h2>
+                <span
+                  class="item-card-watch inline-block text-xs sm:text-sm gh-text-accent"
+                  >Voir l'article →</span
+                >
+              </div>
+            </a>
+            
           </div>
 
           <div
@@ -3289,7 +3230,7 @@
             <div>
               <div class="footer-logo mb-4">
                 <img
-                  src="https://static.vecteezy.com/system/resources/previews/007/434/967/non_2x/clothing-store-icon-style-vector.jpg"
+                  src="images/logo-artmace-2.png"
                   alt="Art Macé Production Artisanale"
                   class="h-10 w-auto"
                   loading="lazy"
@@ -3439,7 +3380,9 @@
                   <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
               </span>
-              <span class="gh-nav-label text-[10px] font-semibold">Shop</span>
+              <span class="gh-nav-label text-[10px] font-semibold"
+                >Accueil</span
+              >
             </a>
           </li>
           <li>
@@ -3448,7 +3391,7 @@
               class="gh-nav-link flex flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1"
             >
               <span class="gh-nav-icon-wrap relative">
-                <span class="gh-escort-notification-badge">NEW</span>
+                <span class="gh-escort-notification-badge">NOUVEAU</span>
                 <svg
                   class="gh-nav-icon h-6 w-6"
                   viewBox="0 0 24 24"
@@ -3483,7 +3426,9 @@
                   <line x1="15" y1="12" x2="3" y2="12"></line>
                 </svg>
               </span>
-              <span class="gh-nav-label text-[10px] font-semibold">Login</span>
+              <span class="gh-nav-label text-[10px] font-semibold"
+                >Se Connecter</span
+              >
             </a>
           </li>
           <li>
@@ -3506,13 +3451,13 @@
                 </svg>
               </span>
               <span class="gh-nav-label text-[10px] font-semibold"
-                >Sign Up</span
+                >S'Inscrire</span
               >
             </a>
           </li>
           <li>
             <a
-              href="https://t.me/clothingstoreadmin"
+              href="https://web.telegram.org/a/#5284380831"
               target="_blank"
               rel="noopener noreferrer"
               class="gh-nav-link flex flex-col items-center justify-center gap-0.5 rounded-xl px-1 py-1"
@@ -3535,6 +3480,7 @@
           </li>
         </ul>
       </nav>
+
       <div class="gh-mobile-spacer h-16 md:hidden"></div>
     </div>
     <!-- .gh-layout-root -->
@@ -3696,6 +3642,25 @@
           }
         ]
       }
+    </script>
+
+    <script>
+      // Smooth scroll dans .gh-scroll-wrap pour les liens # en mobile
+      (function () {
+        var scrollWrap = document.querySelector(".gh-scroll-wrap");
+        if (!scrollWrap) return;
+
+        document.addEventListener("click", function (e) {
+          var link = e.target.closest("a[href='#']");
+          if (!link) return;
+
+          // Ne pas intercepter les liens Telegram
+          if (link.getAttribute("target") === "_blank") return;
+
+          e.preventDefault();
+          scrollWrap.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
     </script>
 
     <!--
